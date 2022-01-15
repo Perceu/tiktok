@@ -9,7 +9,7 @@ def animate(screen, desenho):
     position_y = 0
     
     while True:
-        sleep(0.01)
+        sleep(0.006)
         try:
             c = lines[position_x][position_y]
         except Exception as e:
