@@ -1,5 +1,5 @@
-# Tiktok
-Repositorio dos codigos que eu mostro rodando nos videos tiktok
+# TikTok
+Repositorio dos codigos que eu mostro rodando nos videos TikTok.
 
-## link para os videos 
-[@perceubertoletti](https://www.tiktok.com/@perceubertoletti) Segue la 
+## Link para os videos 
+[@perceubertoletti](https://www.tiktok.com/@perceubertoletti) Segue lá.
