@@ -1,11 +1,25 @@
 from turtle import Screen
 
-def setupScreen(width, height):
+def setupScreen(width, height, color="black"):
     screen = Screen()
     screen.setup(width, height)
     screen.colormode(255)
-    screen.bgcolor("black")
-    return screen    
+    screen.bgcolor(color)
+    return screen
+
+def circle_coordenates(tl, raio):
+    tl.color('#ffffff')
+    coordenates = list()
+    for _ in range(180):
+        tl.penup()
+        tl.fd(raio)
+        coordenates.append(tl.pos())
+        tl.pendown()
+        tl.circle(2)
+        tl.penup()
+        tl.back(raio)
+        tl.left(2)
+    return coordenates
 
 def square(turtle, size):
     for i in range(4):
