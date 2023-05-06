@@ -11,13 +11,17 @@ fake = Faker()
 Faker.seed(0)
 
 def run():
-    for _ in range(300):
+    left = 1
+    for _ in range(360):
         tl.pencolor(fake.hex_color())
         tl.penup()
         tl.goto(0,0)
+        tl.setheading(90)
+        tl.left(left)
+        left += 1
         tl.pendown()
-        for size in range(randint(15,50)):
-            tl.left(randint(5,10))
+        for size in range(50):
+            tl.left(5)
             tl.forward(size)
 
 
