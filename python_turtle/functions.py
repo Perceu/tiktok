@@ -15,7 +15,7 @@ def circle_coordenates(tl, raio):
         tl.fd(raio)
         coordenates.append(tl.pos())
         tl.pendown()
-        tl.circle(2)
+        tl.circle(1)
         tl.penup()
         tl.back(raio)
         tl.left(2)
