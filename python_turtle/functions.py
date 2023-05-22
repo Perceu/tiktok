@@ -26,6 +26,11 @@ def square(turtle, size):
         turtle.fd(size)
         turtle.right(90)
 
+def square_l(turtle, size):
+    for i in range(4):
+        turtle.fd(size)
+        turtle.left(90)
+
 def triangle(turtle, size):
     for i in range(3):
         turtle.fd(size)

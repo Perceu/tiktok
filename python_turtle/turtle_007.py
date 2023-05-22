@@ -17,9 +17,9 @@ def format_color(color):
     return f"#{color[0]:02x}{color[1]:02x}{color[2]:02x}"
       
 def run():
-    color_ini = [0xff, 0x00, 0x59]
-    color_fim = [0x00, 0xb7, 0xff]
-    circle_size = 3
+    color_ini = [0xff, 0x00, 0x42]
+    color_fim = [0x00, 0xa7, 0xff]
+    circle_size = 4
     while (color_ini != color_fim):
         color_ini[0] = get_color(0, ini=color_ini, fim=color_fim)
         color_ini[1] = get_color(1, ini=color_ini, fim=color_fim)

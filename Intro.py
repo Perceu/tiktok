@@ -98,4 +98,4 @@ print(f'len_texto: {len(lether_list)}')
 
 video = ImageSequenceClip(quadros, fps=fps)
 
-video.write_videofile(f'intro.mp4', fps=fps)
+video.write_videofile(f'intro{texto}.mp4', fps=fps)
