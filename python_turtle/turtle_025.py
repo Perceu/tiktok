@@ -10,7 +10,7 @@ tl.speed(0)
 tl.pencolor('white')
 fake = Faker()
 Faker.seed(0)
-
+tl.hideturtle()
 def draw_form(turtle, size):
     distance = size//2
     if distance < 25:
