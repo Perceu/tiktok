@@ -8,7 +8,8 @@ class App:
         self.width = 720
         self.height = 1280
         self.running = False
-
+        self.load = self.height
+        self.scale = 10
         pyxel.init(self.width, self.height)
         pyxel.run(self.update, self.draw)
 
@@ -21,12 +22,14 @@ class App:
 
     def draw(self):
         if self.running:
-            color = randint(0,15)
-            size = randint(10,50)
-            size_2 = randint(10,50)
-            position_x = randint(0,self.width)
-            position_y = randint(0,self.height)
-            pyxel.rect(position_x, position_y, size, size, color)
-            pyxel.rectb(position_x, position_y, size_2, size_2, 7)
+            self.load -= self.scale
+            if self.load < 0:
+                self.scale = self.scale//2
+                self.load = self.height
+                if self.scale <= 0:
+                    self.running = False
+
+            for i in range(self.width):
+                pyxel.pset(i, self.load, 7)
 
 App()

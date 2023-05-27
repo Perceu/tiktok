@@ -20,17 +20,16 @@ class App:
             self.running = True
 
     def draw(self):
-        color = randint(0,15)
-        border = randint(0,15)
-
-        size = randint(3,30)
-        size_2 = randint(10,100)
-
-        position_x = randint(10,self.width)
-        position_y = randint(10,self.height)
-        
         if self.running:
+            color = randint(0,15)
+
+            size = randint(3,30)
+            size_2 = randint(0,50)
+
+            position_x = randint(0,self.width)
+            position_y = randint(0,self.height)
+        
             pyxel.circ(position_x, position_y, size, color)
-            pyxel.circb(position_x, position_y, size_2, border)
+            pyxel.circb(position_x, position_y, size_2, 7)
 
 App()
