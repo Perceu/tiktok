@@ -31,7 +31,6 @@ quadros = []
 font = ImageFont.truetype(FONT_PATH, 80)
 
 texto = sys.argv[1]
-tech_arg = sys.argv[2]
 
 texto = texto.upper()
 lether_list = []
@@ -44,9 +43,6 @@ count = 0
 
 logo = get_powered_by()
 width_logo, height_logo = logo.size
-
-logo_tech = get_logo_tech(tech_arg)
-width_logo_tech, height_logo_tech = logo_tech.size
 
 for tempo in range(tempo_total * fps):
     if count>lether_time:
