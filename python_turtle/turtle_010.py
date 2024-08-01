@@ -1,5 +1,5 @@
 from turtle import Turtle
-from functions import setupScreen, gradient_color, format_color, triangle_2
+from functions import setupScreen, gradient_color, format_color, triangle_l
 
 screen = setupScreen(580,1280)
 tl = Turtle()
@@ -16,7 +16,7 @@ def run():
         size += 5
         if size <= 0:
             break
-        triangle_2(tl, size)
+        triangle_l(tl, size)
         tl.right(3)
     screen.exitonclick()
 
