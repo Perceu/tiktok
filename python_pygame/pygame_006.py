@@ -1,8 +1,8 @@
 import random
+from re import X
 import pygame
-import time
 
-from common.firework import Firework
+from common.startfield import Star
 
 pygame.init()
 
@@ -11,11 +11,15 @@ screen = pygame.display.set_mode(windown_size)
 ingame = True
 run = False
 gravity = pygame.Vector2(0, 0.2)
-fireworks: list[Firework] = []
+stars: list[Star] = []
 clock = pygame.time.Clock()
 
-# for p in particles:
-#     p.apply_force(10)
+
+for i in range(1000):
+    x = random.randint(-(width-50), width-50)
+    y = random.randint(-(height-50), height-50)
+    z = random.randint(0, width)
+    stars.append(Star(x,y,z))
 
 
 while ingame:
@@ -27,14 +31,9 @@ while ingame:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
                 run = not run
-    if run:
-        if random.random() < 0.1:
-            fireworks.append(
-                Firework(screen)
-            )
 
-    for idx, f in enumerate(fireworks):
-        f.update(gravity)
-        f.draw()
+    for star in stars:
+        star.update(screen)
+        star.draw(screen)
 
     pygame.display.update()
