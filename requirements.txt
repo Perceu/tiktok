@@ -1,5 +1,5 @@
 Faker==18.3.1
-Pillow==9.5.0
-pygame==2.3.0
+Pillow==11.1.0
+pygame==2.6.1
 pyxel==1.9.13
 moviepy==1.0.3
