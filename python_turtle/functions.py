@@ -43,7 +43,7 @@ def triangle(turtle, size):
 
 
 def triangle_l(turtle, size):
-    for i in range(4):
+    for i in range(3):
         turtle.fd(size)
         turtle.left(120)
 
