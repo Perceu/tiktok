@@ -1,12 +1,11 @@
 import pyxel
 from random import randint, choice
 
-
 class App:
 
     def __init__(self):
-        self.width = 720
-        self.height = 1280
+        self.width = 576
+        self.height = 1024
         self.running = False
         self.position_y = -30
         self.position_x = 0
