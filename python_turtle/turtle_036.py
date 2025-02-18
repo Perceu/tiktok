@@ -1,6 +1,8 @@
 from PIL import Image
 from turtle import Turtle
 from functions import setupScreen
+import colorsys
+
 
 screen = setupScreen(576, 1024)
 tl = Turtle()
@@ -22,7 +24,11 @@ def run():
     tl.pencolor('white')
     tl.penup()
     tl.fillcolor('black')
-    for i in range(700):
+    h=0.0
+    for i in range(800):
+        h += 0.003
+        color = colorsys.hsv_to_rgb(h, 1, 1)
+        tl.pencolor(int(color[0]*255), int(color[1]*255), int(color[2]*255))
         tl.up()
         tl.circle(i, 45)
         tl.down()
