@@ -1,6 +1,6 @@
 import py5
 import random
-windown_size = width, height = 720, 1280
+windown_size = width, height = 576, 1024
 running = False
 circles = []
 
@@ -30,7 +30,7 @@ def setup():
     for _ in range(1000):
         w = random.randint(5,py5.width-5)
         d = random.randint(10,30)
-        c = Circle(w, random.randint(1280,2560), d)
+        c = Circle(w, random.randint(1024, 2048), d)
         circles.append(c)
 
 

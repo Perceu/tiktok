@@ -1,12 +1,11 @@
-from turtle import width
 import pyxel
 from random import randint
 
 
 class App:
     def __init__(self):
-        self.width = 720
-        self.height = 1280
+        self.width = 576
+        self.height = 1024
         pyxel.init(self.width, self.height)
         self.running = False
         self.raio = 0

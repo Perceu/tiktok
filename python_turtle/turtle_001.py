@@ -1,7 +1,7 @@
 from turtle import Screen, Turtle
 from functions import setupScreen
 
-screen  = setupScreen(580,1280)
+screen  = setupScreen(576, 1024)
 
 turtle = Turtle()
 turtle.goto(-100,100)

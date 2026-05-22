@@ -2,7 +2,7 @@ from turtle import Turtle
 from faker import Faker
 from functions import setupScreen, square, square_l
 
-screen = setupScreen(580,1280)
+screen = setupScreen(576, 1024)
 tl = Turtle()
 tl.speed(0)
 tl.hideturtle()

@@ -1,7 +1,7 @@
 from py5 import Sketch
 import colorsys
 
-windown_size = width, height = 480, 854
+windown_size = width, height = 576, 1024
 
 class MySquare():
     size = 0

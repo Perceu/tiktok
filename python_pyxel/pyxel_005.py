@@ -31,8 +31,8 @@ class Drop:
 class App:
 
     def __init__(self):
-        self.width = 720
-        self.height = 1280
+        self.width = 576
+        self.height = 1024
         self.running = False
         
         self.colors = [

@@ -8,8 +8,8 @@ class App:
         self.width = 576
         self.height = 1024
         self.running = False
-        self.position_y = 640
-        self.position_x = 360
+        self.position_y = 512
+        self.position_x = 288
         self.multiple = 1
         pyxel.init(self.width, self.height)
         pyxel.run(self.update, self.draw)
@@ -26,7 +26,7 @@ class App:
             pyxel.cls(0)
             size = 30
             pyxel.circ(self.position_x, self.position_y, size, 7)
-            if self.position_y > 1200:
+            if self.position_y > 1024:
                 self.multiple = -1
             elif self.position_y < 100:
                 self.multiple = 1

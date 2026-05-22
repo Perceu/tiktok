@@ -2,7 +2,7 @@ from turtle import Turtle
 from random import randint
 
 from functions import setupScreen, gradient_color, format_color
-screen = setupScreen(580,1280)
+screen = setupScreen(576, 1024)
 tl = Turtle()
 tl.speed(0)
 tl.hideturtle()

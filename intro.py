@@ -1,3 +1,4 @@
+import os
 import sys
 from PIL import Image, ImageDraw, ImageFont
 from moviepy.editor import ImageSequenceClip
@@ -16,82 +17,71 @@ IMAGE_SIZE = (WIDTH, HEIGHT) = (1080, 1920)
 
 def get_powered_by():
     return Image.open('./statics/logos/powered.png').convert('RGBA')
-    
+
 def get_logo_tech(tech):
     return Image.open(f'./statics/logos/{tech}.png').convert('RGBA')
 
-largura = WIDTH
-altura = HEIGHT
-fps = 30
-tempo_total = 6
 
-quadros = []
+def create_intro(text, output_path=None):
+    texto = text.upper()
+    output_path = output_path or f'intro{texto}.mp4'
 
-# Declarando a fonte
-font = ImageFont.truetype(FONT_PATH, 80)
+    os.makedirs('./build', exist_ok=True)
 
-texto = sys.argv[1]
+    largura = WIDTH
+    altura = HEIGHT
+    fps = 30
+    tempo_total = 6
 
-texto = texto.upper()
-lether_list = []
-for l in texto:
-    lether_list.append(l)
-lether_list = lether_list[::-1]
-lether_time = ((fps*tempo_total) // (len(texto)+6))
-animation_text = []
-count = 0
+    quadros = []
 
-logo = get_powered_by()
-width_logo, height_logo = logo.size
+    font = ImageFont.truetype(FONT_PATH, 80)
 
-for tempo in range(tempo_total * fps):
-    if count>lether_time:
-        count=0
-        try:
-            animation_text.append(lether_list.pop()) 
-        except:
-            pass
-        print(animation_text)
+    lether_list = list(texto)[::-1]
+    lether_time = ((fps * tempo_total) // (len(texto) + 6))
+    animation_text = []
+    count = 0
 
-    image = Image.new('RGBA', IMAGE_SIZE, BACKGROUND)
+    for tempo in range(tempo_total * fps):
+        if count > lether_time:
+            count = 0
+            if lether_list:
+                animation_text.append(lether_list.pop())
 
-    draw = ImageDraw.Draw(image)
+        current = ''.join(animation_text)
+        image = Image.new('RGBA', IMAGE_SIZE, BACKGROUND)
+        draw = ImageDraw.Draw(image)
 
-    frame_1_start = ((HEIGHT//2)-100)-100
-    frame_1_end = ((HEIGHT//2)-100)
+        frame_1_start = ((HEIGHT // 2) - 100) - 100
+        frame_1_end = ((HEIGHT // 2) - 100)
 
-    draw.rectangle((frame_1_start-550,frame_1_start,frame_1_end-550,frame_1_end), FRAME_COLOR_1)    
-    draw.rectangle((frame_1_start-500,frame_1_start+50,frame_1_end-450,frame_1_end+100), BACKGROUND)
+        draw.rectangle((frame_1_start - 550, frame_1_start, frame_1_end - 550, frame_1_end), FRAME_COLOR_1)
+        draw.rectangle((frame_1_start - 500, frame_1_start + 50, frame_1_end - 450, frame_1_end + 100), BACKGROUND)
 
-    draw.rectangle((frame_1_start,frame_1_start,frame_1_end,frame_1_end), FRAME_COLOR_2)
-    draw.rectangle((frame_1_start-50,frame_1_start+50,frame_1_end-50,frame_1_end+50), BACKGROUND)
+        draw.rectangle((frame_1_start, frame_1_start, frame_1_end, frame_1_end), FRAME_COLOR_2)
+        draw.rectangle((frame_1_start - 50, frame_1_start + 50, frame_1_end - 50, frame_1_end + 50), BACKGROUND)
 
-    draw.rectangle((frame_1_start, frame_1_start+350, frame_1_end, frame_1_end+350), FRAME_COLOR_1)    
-    draw.rectangle((frame_1_start-50,frame_1_start+300,frame_1_end-50,frame_1_end+300), BACKGROUND)
+        draw.rectangle((frame_1_start, frame_1_start + 350, frame_1_end, frame_1_end + 350), FRAME_COLOR_1)
+        draw.rectangle((frame_1_start - 50, frame_1_start + 300, frame_1_end - 50, frame_1_end + 300), BACKGROUND)
 
-    draw.rectangle((frame_1_start-550,frame_1_start+350,frame_1_end-550,frame_1_end+350), FRAME_COLOR_2)
-    draw.rectangle((frame_1_start-500,frame_1_start+300,frame_1_end-500,frame_1_end+300), BACKGROUND)
+        draw.rectangle((frame_1_start - 550, frame_1_start + 350, frame_1_end - 550, frame_1_end + 350), FRAME_COLOR_2)
+        draw.rectangle((frame_1_start - 500, frame_1_start + 300, frame_1_end - 500, frame_1_end + 300), BACKGROUND)
 
-    # total arguments
-    if (animation_text):
-        text_width, text_height = DrawHelpers.get_text_dimensions(''.join(animation_text), font)
-        POSITION = (((WIDTH//2)-(text_width//2)), ((HEIGHT//2)-(text_height//2)))
-        draw.text(
-                POSITION, 
-                ''.join(animation_text), 
-                font=font, 
-                fill=FONT_COLOR
-        )
-    # Adicione o quadro à lista
-    count += 1
-    image.save(f"./build/{''.join(animation_text)}_{count}.png")
-    quadros.append(f"./build/{''.join(animation_text)}_{count}.png")
+        if animation_text:
+            text_width, text_height = DrawHelpers.get_text_dimensions(current, font)
+            POSITION = (((WIDTH // 2) - (text_width // 2)), ((HEIGHT // 2) - (text_height // 2)))
+            draw.text(POSITION, current, font=font, fill=FONT_COLOR)
 
-print(f'Total de quadros: {len(quadros)}')
-print(f'Termpo por letra: {lether_time}')
-print(f'texto: {lether_list}')
-print(f'len_texto: {len(lether_list)}')
+        count += 1
+        image.save(f"./build/{current}_{count}.png")
+        quadros.append(f"./build/{current}_{count}.png")
 
-video = ImageSequenceClip(quadros, fps=fps)
+    video = ImageSequenceClip(quadros, fps=fps)
+    video.write_videofile(output_path, fps=fps)
 
-video.write_videofile(f'intro{texto}.mp4', fps=fps)
+    return output_path
+
+
+if __name__ == '__main__':
+    texto = sys.argv[1]
+    create_intro(texto)

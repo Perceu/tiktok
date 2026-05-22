@@ -4,7 +4,7 @@ import time
 import random
 pygame.init()
 
-windown_size = width, height = 720, 1280
+windown_size = width, height = 576, 1024
 screen = pygame.display.set_mode(windown_size)
 ingame = True
 

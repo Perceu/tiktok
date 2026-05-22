@@ -1,6 +1,6 @@
 import py5
 from random import randint
-windown_size = width, height = 720, 1280
+windown_size = width, height = 576, 1024
 running = False
 write_lines = False
 y_location = 0
@@ -12,7 +12,7 @@ def setup():
     py5.size(*windown_size)
     py5.background(0)
     py5.color_mode(py5.HSB, 360, 100, 100)
-    while y_location < 1300:
+    while y_location < 1024:
         positions.append((x_location, y_location, 20))
         x_location += 20 
         if x_location > py5.width+20:

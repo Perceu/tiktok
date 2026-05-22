@@ -4,7 +4,7 @@ import random
 
 pygame.init()
 
-windown_size = width, height = 720, 1280
+windown_size = width, height = 576, 1024
 
 fireColors = [
     pygame.Color(0,0,0),
@@ -51,8 +51,8 @@ screen = pygame.display.set_mode(windown_size)
 ingame = True
 firePixelArray = []
 
-fireHeight = 60
-fireWidth = 80
+fireHeight = 40
+fireWidth = 23
 
 pixelHeight = 25
 pixelWidth = 25

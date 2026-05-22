@@ -1,6 +1,6 @@
 import py5
 
-windown_size = width, height = 720, 1280
+windown_size = width, height = 576, 1024
 running = False
 size = 5
 cordenates_ori = []

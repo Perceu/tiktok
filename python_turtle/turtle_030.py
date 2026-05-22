@@ -3,7 +3,7 @@ from functions import setupScreen
 from functions import star, get_color
 from faker import Faker
 
-screen = setupScreen(580, 1280)
+screen = setupScreen(576, 1024)
 tl = Turtle()
 tl.speed(0)
 tl.hideturtle()
